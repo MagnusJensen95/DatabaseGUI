@@ -4,6 +4,7 @@ public class Actor {
 	
 	private String firstname, lastname;
 	private static int ID;
+	private int userID;
 	private String password = "";
 	public boolean admin = false;
 	
@@ -13,7 +14,7 @@ public class Actor {
 		this.lastname = lastname;
 		this.password = password;
 		this.admin = admin;
-		this.ID = ++ID;
+		
 		
 	}
 	
@@ -34,6 +35,15 @@ public class Actor {
 	public void setPassword(String newPass) {
 		this.password = newPass;
 		
+	}
+
+	public static int getID() {
+		return ID;
+	}
+
+	public static int setID(int iD) {
+		ID = iD;
+		return iD;
 	}
 	
 	

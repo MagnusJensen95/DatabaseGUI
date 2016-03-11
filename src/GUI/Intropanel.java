@@ -16,6 +16,7 @@ public class Intropanel extends JPanel {
 	public Intropanel(){
 		
 		welcome = new JLabel ("Welcome to the show.");
+		welcome.setForeground(Color.white);
 		proceed = new JButton ("Proceed");
 		proceed.addActionListener(new ProceedListener());
 		
@@ -24,6 +25,7 @@ public class Intropanel extends JPanel {
 		
 		
 		setPreferredSize(new Dimension(400, 200));
+		setBackground(Color.BLACK);
 		
 	}
 	

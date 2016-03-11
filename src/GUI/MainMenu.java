@@ -17,8 +17,11 @@ public class MainMenu extends JPanel {
 
 	public MainMenu(){
 		
+		setLayout(new GridLayout(4,1));
+		
 		options = new JLabel("Hello there, what do you wanna do?");
 		options.setForeground(Color.white);
+		
 		createUser = new JButton("Create User");
 		logIn = new JButton("Log In");
 		quit = new JButton("Quit");
@@ -32,7 +35,7 @@ public class MainMenu extends JPanel {
 		add (logIn);
 		add (quit);
 		
-		setPreferredSize(new Dimension(400, 200));
+		setPreferredSize(new Dimension(600, 200));
 		setBackground(Color.BLACK);
 	}
 	
@@ -40,7 +43,7 @@ public class MainMenu extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			GUIwindow.setContentpane(new UserCreation());
 			
 		}
 		
