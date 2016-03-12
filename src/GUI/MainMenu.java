@@ -27,7 +27,7 @@ public class MainMenu extends JPanel {
 		quit = new JButton("Quit");
 		
 		createUser.addActionListener(new CreateUser());
-		logIn.addActionListener(new LogIn());
+		logIn.addActionListener(new LogInButton());
 		quit.addActionListener(new Quitter());
 		
 		add (options);
@@ -49,11 +49,11 @@ public class MainMenu extends JPanel {
 		
 		
 	}
-	private class LogIn implements ActionListener{
+	private class LogInButton implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			GUIwindow.setContentpane(new LogIn());;
 			
 		}
 		
