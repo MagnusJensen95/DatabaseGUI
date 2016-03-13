@@ -15,16 +15,19 @@ public class Intropanel extends JPanel {
 
 	public Intropanel(){
 		
-		welcome = new JLabel ("Welcome to the show.");
+		setLayout(new GridLayout(2,1));
+		welcome = new JLabel ("Jensens Dataprogram 2.0", JLabel.CENTER);
 		welcome.setForeground(Color.white);
+		
 		proceed = new JButton ("Proceed");
 		proceed.addActionListener(new ProceedListener());
+		
 		
 		add (welcome);
 		add (proceed);
 		
 		
-		setPreferredSize(new Dimension(400, 200));
+		setPreferredSize(new Dimension(600, 200));
 		setBackground(Color.BLACK);
 		
 	}
@@ -32,7 +35,7 @@ public class Intropanel extends JPanel {
 	private class ProceedListener implements ActionListener{
 	
 		public void actionPerformed (ActionEvent e){
-			GUIwindow.setContentpane(new MainMenu());
+			GUIDAO.getGUI().setContentpane(GUIDAO.getGUI().getMain());
 		}
 
 	}

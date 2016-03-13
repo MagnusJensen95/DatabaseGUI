@@ -8,8 +8,8 @@ import java.sql.*;
 public class ActorDAO {
 
 
-public static void addActor(String firstname, String lastname, String password){
-	Actor newbro = new Actor(firstname, lastname, password, false);
+public static void addActor(String firstname, String lastname, String password, String email){
+	//Actor newUser = new Actor(firstname, lastname, password, false);
 	int id = 1;
 	try {
 		ResultSet rs = AccessController.getDatacenter().doQuery("Select * from users");
@@ -23,7 +23,7 @@ public static void addActor(String firstname, String lastname, String password){
 	}
 
 	try {
-		AccessController.getDatacenter().doUpdate("Insert into users values (" + id + ", '" + firstname + "' , '" + lastname + "' , '" + password + "' )");
+		AccessController.getDatacenter().doUpdate("Insert into users values (" + id + ", '" + firstname + "' , '" + lastname + "' , '" + password + "' , '" + email + "')") ;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -34,5 +34,88 @@ public static void addActor(String firstname, String lastname, String password){
 	
 }
 
+public static void deleteUser(int id, String table){
+	try {
+		ResultSet rs = AccessController.getDatacenter().doQuery("Select * from " + table);
+	while (rs.next()){
+		if (rs.getInt("ID") == id){
+			 AccessController.getDatacenter().doUpdate("Delete from " +table+ " where ID = " + id);
+			 id++;
+			 break;
+		}
+	}
+	while (rs.next()){
+		if (rs.getInt("ID") == id){
+			AccessController.getDatacenter().doUpdate("Update " +table+ " set ID  = " + (id-1) + " where ID = " +id);
+			id++;
+		}
+	}
+		
+	} catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+}
+
+private int getTuples(String table){
+	int tuple = 0;
+	try {
+		ResultSet rs = AccessController.getDatacenter().doQuery("Select * from " + table);
+	while (rs.next()){
+		tuple++;
+	}
+		
+	} catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
+	return tuple;
+}
+
+public static boolean emailUsed(String email){
+	boolean used = false;
+	
+	ResultSet rs = null;
+	int id = 0;
+	try {
+		rs = AccessController.getDatacenter().doQuery("Select * from users where email = '" + email + "'");
+		while (rs.next()){
+			id++;
+		}
+		
+	} catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
+	if (id >0){
+		used = true;
+	}
+	
+	return used;
+}
+
+public static boolean isUser(String password, String email){
+	boolean user = false;
+	ResultSet rs = null;
+	int id = 0;
+	try {
+		rs = AccessController.getDatacenter().doQuery("Select * from users where email = '" + email + "' and password = '" +password + "'  ");
+		while (rs.next()){
+			id++;
+		}
+		
+	} catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
+	if (id >0){
+		user = true;
+	}
+	
+	return user;
+}
 
 }
