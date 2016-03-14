@@ -60,7 +60,7 @@ public class MakeAdminPanel  extends JPanel{
 				if (!(table.getText().equals(""))){
 			
 			AdminDAO.addAdmin(Integer.parseInt(userID.getText()), table.getText());
-			ActorDAO.deleteUser(Integer.parseInt(userID.getText()), table.getText());
+			
 		}
 			}
 			}

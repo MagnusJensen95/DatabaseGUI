@@ -8,11 +8,11 @@ import java.sql.*;
 public class ActorDAO {
 
 
-public static void addActor(String firstname, String lastname, String password, String email){
+public static void addActor(String firstname, String lastname, String password, String email, String table){
 	//Actor newUser = new Actor(firstname, lastname, password, false);
 	int id = 1;
 	try {
-		ResultSet rs = AccessController.getDatacenter().doQuery("Select * from users");
+		ResultSet rs = AccessController.getDatacenter().doQuery("Select * from " + table);
 	while (rs.next()){
 		id++;
 	}
@@ -23,7 +23,7 @@ public static void addActor(String firstname, String lastname, String password, 
 	}
 
 	try {
-		AccessController.getDatacenter().doUpdate("Insert into users values (" + id + ", '" + firstname + "' , '" + lastname + "' , '" + password + "' , '" + email + "')") ;
+		AccessController.getDatacenter().doUpdate("Insert into " + table + " values (" + id + ", '" + firstname + "' , '" + lastname + "' , '" + password + "' , '" + email + "')") ;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

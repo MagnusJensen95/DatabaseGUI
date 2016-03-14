@@ -77,7 +77,7 @@ public class UserCreation extends JPanel {
 								if (!(ActorDAO.emailUsed(emailaddress.getText()))){
 
 								ActorDAO.addActor(firstname.getText(), lastname.getText(), password.getText(),
-										emailaddress.getText());
+										emailaddress.getText(), "users");
 								GUIDAO.getGUI()
 								.setContentpane(GUIDAO.getGUI().getMain());
 								}

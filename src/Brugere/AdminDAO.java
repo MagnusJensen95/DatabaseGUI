@@ -8,10 +8,12 @@ import Database.AccessController;
 public class AdminDAO {
 
 	public static void addAdmin(int id, String table){
-		ResultSet rs = null;
+	
 		try {
-			rs = AccessController.getDatacenter().doQuery("Select * from " + table + " where ID = "+ id);
-			//AccessController.getDatacenter().doUpdate("Insert into admins values (" + rs+")");
+			ResultSet rs = AccessController.getDatacenter().doQuery("Select * from " + table + " where ID = "+ id);
+			if (rs.next())
+			ActorDAO.addActor(rs.getString("Firstname"), rs.getString("Lastname"), rs.getString("Password"), rs.getString("email"), "admins");
+			ActorDAO.deleteUser(id, table);
 		
 		} catch (SQLException e1) {
 			System.err.println("Not at valid User");
