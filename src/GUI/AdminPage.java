@@ -12,16 +12,20 @@ public class AdminPage extends JPanel {
 	private JButton deleteUser;
 	private JButton makeAdmin;
 	private JButton mainmenu;
+	private JButton addContent;
+	
 	
 	
 	public AdminPage(){
 		
-		setLayout(new GridLayout(4, 1));
+		setLayout(new GridLayout(5, 1));
 		setBackground(Color.BLACK);
 		
 		topmsg = new JLabel("Welcome to the Admin page. Choose an option.");
 		topmsg.setForeground(Color.white);
 		
+		addContent = new JButton("Add Content to the Database");
+		addContent.addActionListener(new AddcontentListener());
 		deleteUser = new JButton("Delete a User");
 		deleteUser.addActionListener(new DeleteUserListener());
 		makeAdmin = new JButton("Grant Admin status on a User");
@@ -30,6 +34,7 @@ public class AdminPage extends JPanel {
 		mainmenu.addActionListener(new MainMenuListener());
 		
 		add (topmsg);
+		add (addContent);
 		add (deleteUser);
 		add (makeAdmin);
 		add (mainmenu);
@@ -52,7 +57,7 @@ public class AdminPage extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			GUIDAO.getGUI().setContentpane(new MakeAdminPanel());
 			
 		}
 		
@@ -62,6 +67,15 @@ public class AdminPage extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			GUIDAO.getGUI().setContentpane(GUIDAO.getGUI().getMain());
+		}
+		
+	}
+	
+	private class AddcontentListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
 		}
 		
 	}

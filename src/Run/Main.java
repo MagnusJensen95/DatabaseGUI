@@ -8,7 +8,7 @@ import java.sql.*;
 import Database.Database;
 
 public class Main {
-	Database datacenter = new Database();
+	//Database datacenter = new Database();
 	
 	public static void main(String[] args) {
 		GUIDAO.getGUI().initializeGUI();

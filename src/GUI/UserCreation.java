@@ -92,6 +92,7 @@ public class UserCreation extends JPanel {
 			} 
 			else {
 				msg.setText("You must fill in all the textfields");
+				msg.setForeground(Color.red);
 			}
 
 		}

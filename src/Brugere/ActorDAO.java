@@ -34,13 +34,15 @@ public static void addActor(String firstname, String lastname, String password, 
 	
 }
 
-public static void deleteUser(int id, String table){
+public static boolean deleteUser(int id, String table){
+	boolean deleted = false;
 	try {
 		ResultSet rs = AccessController.getDatacenter().doQuery("Select * from " + table);
 	while (rs.next()){
 		if (rs.getInt("ID") == id){
 			 AccessController.getDatacenter().doUpdate("Delete from " +table+ " where ID = " + id);
 			 id++;
+			 deleted = true;
 			 break;
 		}
 	}
@@ -55,6 +57,7 @@ public static void deleteUser(int id, String table){
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
+	return deleted;
 }
 
 private int getTuples(String table){

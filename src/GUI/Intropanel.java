@@ -28,7 +28,6 @@ public class Intropanel extends JPanel {
 		
 		
 		setPreferredSize(new Dimension(600, 200));
-		setBackground(Color.BLACK);
 		
 	}
 	
@@ -38,6 +37,13 @@ public class Intropanel extends JPanel {
 			GUIDAO.getGUI().setContentpane(GUIDAO.getGUI().getMain());
 		}
 
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paint(g);
+		g.drawImage(img, x, y, observer)
 	}
 	
 

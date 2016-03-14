@@ -65,8 +65,16 @@ public class DeleteUserPanel extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ActorDAO.deleteUser(Integer.parseInt(userID.getText()), table.getText());
-			GUIDAO.getGUI().setContentpane(GUIDAO.getGUI().getAdminpage());
+			
+			if (!(userID.getText().equals(""))){
+				if (ActorDAO.deleteUser(Integer.parseInt(userID.getText()), table.getText())){
+				GUIDAO.getGUI().setContentpane(GUIDAO.getGUI().getAdminpage());
+			}
+			else {
+				msg.setText("This user doesnt exist in this table");
+				msg.setForeground(Color.red);
+			}
+			}
 		}
 		
 	}

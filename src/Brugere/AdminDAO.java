@@ -7,26 +7,17 @@ import Database.AccessController;
 
 public class AdminDAO {
 
-	public static void addAdmin(String firstname, String lastname, String password, String email){
-		//Actor newUser = new Actor(firstname, lastname, password, false);
-		int id = 1;
+	public static void addAdmin(int id, String table){
+		ResultSet rs = null;
 		try {
-			ResultSet rs = AccessController.getDatacenter().doQuery("Select * from admins");
-		while (rs.next()){
-			id++;
-		}
-			
+			rs = AccessController.getDatacenter().doQuery("Select * from " + table + " where ID = "+ id);
+			//AccessController.getDatacenter().doUpdate("Insert into admins values (" + rs+")");
+		
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+			System.err.println("Not at valid User");
 			e1.printStackTrace();
 		}
-
-		try {
-			AccessController.getDatacenter().doUpdate("Insert into admins values (" + id + ", '" + firstname + "' , '" + lastname + "' , '" + password + "', '"+ email + "'");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 	}
 	
 	
