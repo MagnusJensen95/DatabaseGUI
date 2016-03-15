@@ -32,7 +32,7 @@ public class GUIwindow {
 	}
 	
 	public void initializeGUI(){
-	
+		
 		guiFrame.getContentPane().add(GUIDAO.getGUI().intro);
 		guiFrame.pack();
 		guiFrame.setVisible(true);

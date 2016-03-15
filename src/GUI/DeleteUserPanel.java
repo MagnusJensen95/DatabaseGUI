@@ -3,6 +3,9 @@ package GUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import Brugere.*;
 
 import javax.swing.*;
@@ -33,6 +36,7 @@ public class DeleteUserPanel extends JPanel {
 		
 		
 		userID = new JTextField(10);
+		userID.addKeyListener(new numberListener());
 		table = new JTextField(30);
 		
 		delete = new JButton("Delete User");
@@ -79,4 +83,28 @@ public class DeleteUserPanel extends JPanel {
 		
 	}
 	
+	private class numberListener implements KeyListener{
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			char num = e.getKeyChar();
+			
+			if (!(num  > 47 && num < 58)){
+				e.consume();
+			}
+			
+		}
+	}
 }

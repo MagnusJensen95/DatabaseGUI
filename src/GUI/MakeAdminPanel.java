@@ -8,6 +8,8 @@ import Brugere.AdminDAO;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class MakeAdminPanel  extends JPanel{
 	
@@ -32,8 +34,9 @@ public class MakeAdminPanel  extends JPanel{
 		uid.setForeground(Color.white);
 		tab = new JLabel("Table");
 		tab.setForeground(Color.white);
-		userID = new JTextField(30);
-		table = new JTextField(30);
+		userID = new JTextField();
+		userID.addKeyListener(new NumberListener());
+		table = new JTextField();
 		
 		grant = new JButton("Grant Admin Status");
 		grant.addActionListener(new GrantListener());
@@ -57,10 +60,11 @@ public class MakeAdminPanel  extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (!(userID.getText().equals(""))){
+				
 				if (!(table.getText().equals(""))){
 			
 			AdminDAO.addAdmin(Integer.parseInt(userID.getText()), table.getText());
-			
+			GUIDAO.getGUI().setContentpane(GUIDAO.getGUI().getAdminpage());
 		}
 			}
 			}
@@ -73,6 +77,32 @@ public class MakeAdminPanel  extends JPanel{
 			GUIDAO.getGUI().setContentpane(new AdminPage());
 		}
 		
+		
+	}
+	
+	private class NumberListener implements KeyListener{
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			char num = e.getKeyChar();
+			
+			if (!(num  > 47 && num < 58)){
+				e.consume();
+			}
+			
+		}
 		
 	}
 
