@@ -10,7 +10,7 @@ import Brugere.*;
 
 import javax.swing.*;
 
-import javafx.scene.control.TextField;
+//import javafx.scene.control.TextField;
 
 public class DeleteUserPanel extends JPanel {
 	

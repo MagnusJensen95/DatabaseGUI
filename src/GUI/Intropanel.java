@@ -20,9 +20,9 @@ public class Intropanel extends JPanel  {
 
 
 	public Intropanel(){
-			this.setBounds(660, 400, 220, 30);
-		//setLayout(new GridLayout(2, 1));
-		//setBackground(Color.black);
+			
+		
+		
 		
 		try {
 			img = ImageIO.read(new File("C:\\Users\\Magnus\\OneDrive\\DTU\\Eclipse\\worker\\DatabaseGUI\\src\\nusnus.jpg"));
@@ -33,19 +33,24 @@ public class Intropanel extends JPanel  {
 		}
 		
 //		welcome = new JLabel ("Jensens Dataprogram 2.0", JLabel.CENTER);
-//		welcome.setForeground(Color.white);
+//	welcome.setForeground(Color.white);
+//	welcome.show(true);
 		
-		proceed = new JButton ("Proceed");
+		proceed = new JButton ("Welcome to the tech shop. Press here to proceed");
 		proceed.addActionListener(new ProceedListener());
+		proceed.setBackground(Color.yellow);
+		proceed.setForeground(Color.BLACK);
+		proceed.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		
 			
 		
 		
 		//add(welcome);
 		
-		add(proceed);
-		//proceed.setLocation(getWidth()/2, getHeight());	
+		this.add(proceed);
+	
 		
-		setPreferredSize(new Dimension(800, 500));
+		setPreferredSize(new Dimension(800, 600));
 		
 		
 	}

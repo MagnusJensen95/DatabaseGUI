@@ -37,7 +37,7 @@ public class MainMenu extends JPanel {
 		add(adminLogIn);
 		add(quit);
 
-		setPreferredSize(new Dimension(600, 200));
+		setPreferredSize(new Dimension(800, 600));
 		setBackground(Color.BLACK);
 	}
 
